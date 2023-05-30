@@ -4,7 +4,7 @@ import Link from 'next/link'
 const rmi = () => {
 
     const code1 = "--import java.rmi.Remote; import java.rmi.RemoteException; public interface RemoteService extends Remote {String processRequest(String request) throws RemoteException; }";
-    const code2 = "--import java.rmi.RemoteException; import java.rmi.server.UnicastRemoteObject; public class RemoteServiceImpl extends UnicastRemoteObject implements RemoteService { public RemoteServiceImpl() throws RemoteException {} @Override public String processRequest(String request) throws RemoteException { return 'Processed: ' + request; } }";
+    const code2 = "--import java.rmi.RemoteException; import java.rmi.server.UnicastRemoteObject; public class RemoteServiceImpl extends UnicastRemoteObject implements RemoteService { public RemoteServiceImpl() throws RemoteException {// Required to throw RemoteException from the constructor} @Override public String processRequest(String request) throws RemoteException { return 'Processed: ' + request; } }";
     const code3 = "--import java.rmi.registry.LocateRegistry; import java.rmi.registry.Registry; public class Server { public static void main(String[] args) { try { RemoteService remoteService = new RemoteServiceImpl(); Registry registry = LocateRegistry.createRegistry(1099); registry.rebind('RemoteService', remoteService); System.out.println('Server started!'); } catch (Exception e) { e.printStackTrace(); } } }";
     const code4 = "--import java.rmi.registry.LocateRegistry; import java.rmi.registry.Registry; public class Client { public static void main(String[] args) { try { Registry registry = LocateRegistry.getRegistry('localhost', 1099); RemoteService remoteService = (RemoteService) registry.lookup('RemoteService'); String result = remoteService.processRequest('Hello, server!'); System.out.println('Result: ':  + result); } catch (Exception e) { e.printStackTrace(); } } }";
 
@@ -53,9 +53,13 @@ const rmi = () => {
                 </div>
             </nav>
 
+            RemoteService.java
             <div> {code1} </div>
+            RemoteServiceImpl.java
             <div> {code2} </div>
+            Server.java
             <div> {code3} </div>
+            Client.java
             <div> {code4} </div>
         </div>
     )
