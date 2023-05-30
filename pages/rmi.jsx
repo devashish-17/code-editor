@@ -14,7 +14,7 @@ const rmi = () => {
             <nav className="bg-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 hidden md:block">
                             <img className="h-8 w-8" src="/favicon.ico" alt="Logo" />
                         </div>
                         <div className="flex-grow">
@@ -46,7 +46,7 @@ const rmi = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className='bg-blue-600 text-slate-50 w-20 h-10 flex justify-center items-center rounded-lg'>
+                        <div className='bg-blue-600 text-slate-50 w-20 h-10 md:flex justify-center items-center rounded-lg hidden'>
                             Run
                         </div>
                     </div>
