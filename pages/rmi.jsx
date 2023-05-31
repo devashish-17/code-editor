@@ -66,6 +66,14 @@ const rmi = () => {
             <div> {code3} </div>
             Client.java
             <div> {code4} </div>
+            <div>
+                javac RemoteService.java
+                javac RemoteServiceImpl.java
+                javac Server.java
+                javac Client.java
+            </div>
+            <div> java Server </div>
+            <div> java Client </div>
         </div>
     )
 }
