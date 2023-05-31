@@ -38,6 +38,11 @@ const mpi = () => {
                                         PHP
                                     </div>
                                 </Link>
+                                <Link href={'/webService'}>
+                                    <div className="bg-white text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                                        C#
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                         <div className='bg-blue-600 text-slate-50 w-20 h-10 md:flex justify-center items-center rounded-lg hidden'>
@@ -48,6 +53,8 @@ const mpi = () => {
             </nav>
 
             <div>
+                <div> pip install mpi4py </div>
+                <div> microsoft.com/en-us/download/details.aspx?id=57467 </div>
                 from mpi4py import MPI
 
                 def distribute_data(data, num_processors):
@@ -107,7 +114,7 @@ const mpi = () => {
 
                 if __name__ == "__main__":
                 main()
-
+                <div> mpiexec -n 6 python fn.py </div>
             </div>
         </div>
     )

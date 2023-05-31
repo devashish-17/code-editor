@@ -38,6 +38,11 @@ const bully = () => {
                                         PHP
                                     </div>
                                 </Link>
+                                <Link href={'/webService'}>
+                                    <div className="bg-white text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                                        C#
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                         <div className='bg-blue-600 text-slate-50 w-20 h-10 md:flex justify-center items-center rounded-lg hidden'>
@@ -92,7 +97,7 @@ const bully = () => {
                 print()
 
             </div>
-            
+
             Ring
             <div>
                 def initial():

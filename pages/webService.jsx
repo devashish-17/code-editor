@@ -1,14 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 
-const tokenRing = () => {
+const webService = () => {
 
-
-    const code = "class TokenRing{constructor(numProcesses){this.numProcesses=numProcesses;this.processes=new Array(numProcesses).fill(null);this.tokenIndex=0;this.mutex=new Mutex();}process(processId){if(processId===this.tokenIndex){this.mutex.lock().then(()=>{console.log(`Process ${processId} is in the critical section.`);setTimeout(()=>{console.log(`Process ${processId} is exiting the critical section.`);this.mutex.unlock();this.tokenIndex=(this.tokenIndex+1)%this.numProcesses;this.processes[this.tokenIndex].giveToken();},1000);});}}start(){for(let i=0;i<this.numProcesses;i++){const processId=i;const process=new Process(processId,this);this.processes[processId]=process;process.start();}this.processes[0].giveToken();}}class Process{constructor(processId,tokenRing){this.processId=processId;this.tokenRing=tokenRing;}start(){setTimeout(()=>{this.tokenRing.process(this.processId);this.start();},100);}giveToken(){this.tokenRing.process(this.processId);}}class Mutex{constructor(){this.locked=false;this.waitingQueue=[];}lock(){if(this.locked){return new Promise((resolve)=>{this.waitingQueue.push(resolve);});}else{this.locked=true;return Promise.resolve();}}unlock(){if(this.waitingQueue.length>0){const nextResolver=this.waitingQueue.shift();nextResolver();}else{this.locked=false;}}}const tokenRing=new TokenRing(3);tokenRing.start(); "
+    const code = " data = { 'num1': num1, 'num2': num2 }";
 
     return (
         <div>
-
             <nav className="bg-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
@@ -56,9 +54,65 @@ const tokenRing = () => {
                 </div>
             </nav>
 
-            {code}
+            <div> pip install flask </div>
+            <div> app.py </div>
+            <div>from flask import Flask
+
+                app = Flask(__name__)
+
+                @app.route('/')
+                def hello():
+                return 'Hello, World!'
+
+                if __name__ == '__main__':
+                app.run()
+            </div>
+            <div>or</div>
+            <div>from flask import Flask, request
+
+                app = Flask(__name__)
+
+                @app.route('/add', methods=['POST'])
+                def add_numbers():
+                data = request.json
+                num1 = data['num1']
+                num2 = data['num2']
+                result = num1 + num2
+                return str(result)
+
+                if __name__ == '__main__':
+                app.run()
+            </div>
+
+            <div> python app.py </div>
+
+            <div> client.py </div>
+            <div> import requests
+
+                response = requests.get('http://localhost:5000/')
+                print(response.text)
+            </div>
+            <div>or</div>
+            <div> import requests
+
+                num1 = int(input("Enter the first number: "))
+                num2 = int(input("Enter the second number: "))
+
+                {code}
+
+                response = requests.post('http://localhost:5000/add', json=data)
+                print(response.text)
+            </div>
+
+
+
+
+
+
+
+
         </div>
     )
 }
 
-export default tokenRing
+export default webService
